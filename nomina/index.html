@@ -1,0 +1,1907 @@
+<!doctype html>
+<html lang="es-VE">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#10283b" />
+  <meta name="description" content="Demo interactiva de gestión de nómina para Venezuela. Ejemplos inspirados en LOTTT, IVSS, RPE y FAOV. Datos totalmente ficticios; no es un sistema de pago real." />
+  <meta property="og:title" content="Nómina Clara VE · Demo de gestión de nómina" />
+  <meta property="og:description" content="Explora trabajadores, recibos y simulaciones de nómina venezolana, sin registros ni servicios externos." />
+  <title>Nómina Clara VE · Demo de nómina venezolana</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%2310283b'/%3E%3Cpath d='M15 40L26 20l9 14 7-10 8 16' stroke='%23acf0cf' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <style>/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: "Inter", "Segoe UI", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --radius-xl: 0.75rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .top-\[13px\] {
+    top: 13px;
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
+  }
+  .mx-2 {
+    margin-inline: calc(var(--spacing) * 2);
+  }
+  .mx-\[14px\] {
+    margin-inline: 14px;
+  }
+  .my-2 {
+    margin-block: calc(var(--spacing) * 2);
+  }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
+  }
+  .mt-\[1px\] {
+    margin-top: 1px;
+  }
+  .mt-\[5px\] {
+    margin-top: 5px;
+  }
+  .mt-\[32px\] {
+    margin-top: 32px;
+  }
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .mb-\[5px\] {
+    margin-bottom: 5px;
+  }
+  .mb-\[7px\] {
+    margin-bottom: 7px;
+  }
+  .ml-1 {
+    margin-left: calc(var(--spacing) * 1);
+  }
+  .ml-auto {
+    margin-left: auto;
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-\[6px\] {
+    height: 6px;
+  }
+  .h-\[7px\] {
+    height: 7px;
+  }
+  .h-\[38px\] {
+    height: 38px;
+  }
+  .h-\[42px\] {
+    height: 42px;
+  }
+  .h-\[194px\] {
+    height: 194px;
+  }
+  .h-full {
+    height: 100%;
+  }
+  .w-9 {
+    width: calc(var(--spacing) * 9);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-\[6px\] {
+    width: 6px;
+  }
+  .w-\[7px\] {
+    width: 7px;
+  }
+  .w-\[38px\] {
+    width: 38px;
+  }
+  .w-\[42px\] {
+    width: 42px;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-\[245px\] {
+    max-width: 245px;
+  }
+  .max-w-\[260px\] {
+    max-width: 260px;
+  }
+  .max-w-\[710px\] {
+    max-width: 710px;
+  }
+  .min-w-0 {
+    min-width: calc(var(--spacing) * 0);
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .place-items-center {
+    place-items: center;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
+  }
+  .gap-\[14px\] {
+    gap: 14px;
+  }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-\[17px\] {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(17px * var(--tw-space-y-reverse));
+      margin-block-end: calc(17px * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-\[20px\] {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(20px * var(--tw-space-y-reverse));
+      margin-block-end: calc(20px * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .divide-y {
+    :where(& > :not(:last-child)) {
+      --tw-divide-y-reverse: 0;
+      border-bottom-style: var(--tw-border-style);
+      border-top-style: var(--tw-border-style);
+      border-top-width: calc(1px * var(--tw-divide-y-reverse));
+      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+    }
+  }
+  .divide-\[\#edf1f4\] {
+    :where(& > :not(:last-child)) {
+      border-color: #edf1f4;
+    }
+  }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+  .rounded-\[10px\] {
+    border-radius: 10px;
+  }
+  .rounded-\[11px\] {
+    border-radius: 11px;
+  }
+  .rounded-\[12px\] {
+    border-radius: 12px;
+  }
+  .rounded-\[13px\] {
+    border-radius: 13px;
+  }
+  .rounded-\[14px\] {
+    border-radius: 14px;
+  }
+  .rounded-\[15px\] {
+    border-radius: 15px;
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .\!border-\[\#14364a\] {
+    border-color: #14364a !important;
+  }
+  .border-\[\#326273\] {
+    border-color: #326273;
+  }
+  .border-\[\#d4e9e8\] {
+    border-color: #d4e9e8;
+  }
+  .border-\[\#e3eaf0\] {
+    border-color: #e3eaf0;
+  }
+  .border-\[\#e4edee\] {
+    border-color: #e4edee;
+  }
+  .border-\[\#e6ebef\] {
+    border-color: #e6ebef;
+  }
+  .border-\[\#e7ecef\] {
+    border-color: #e7ecef;
+  }
+  .border-\[\#ebeff3\] {
+    border-color: #ebeff3;
+  }
+  .border-\[\#ebf0f2\] {
+    border-color: #ebf0f2;
+  }
+  .border-\[\#edf1f3\] {
+    border-color: #edf1f3;
+  }
+  .border-\[\#edf1f4\] {
+    border-color: #edf1f4;
+  }
+  .border-\[\#f0dfc0\] {
+    border-color: #f0dfc0;
+  }
+  .border-\[\#f3e4c9\] {
+    border-color: #f3e4c9;
+  }
+  .\!bg-\[\#225064\] {
+    background-color: #225064 !important;
+  }
+  .bg-\[\#1a3d50\] {
+    background-color: #1a3d50;
+  }
+  .bg-\[\#9ce9c2\] {
+    background-color: #9ce9c2;
+  }
+  .bg-\[\#153b4b\] {
+    background-color: #153b4b;
+  }
+  .bg-\[\#14364a\] {
+    background-color: #14364a;
+  }
+  .bg-\[\#b3f2d1\] {
+    background-color: #b3f2d1;
+  }
+  .bg-\[\#d4f3e8\] {
+    background-color: #d4f3e8;
+  }
+  .bg-\[\#d9f4ea\] {
+    background-color: #d9f4ea;
+  }
+  .bg-\[\#d9f5e8\] {
+    background-color: #d9f5e8;
+  }
+  .bg-\[\#dfa041\] {
+    background-color: #dfa041;
+  }
+  .bg-\[\#e3f7ef\] {
+    background-color: #e3f7ef;
+  }
+  .bg-\[\#e5eaff\] {
+    background-color: #e5eaff;
+  }
+  .bg-\[\#e7f6ef\] {
+    background-color: #e7f6ef;
+  }
+  .bg-\[\#eaf7f4\] {
+    background-color: #eaf7f4;
+  }
+  .bg-\[\#edf7f3\] {
+    background-color: #edf7f3;
+  }
+  .bg-\[\#f3faf7\] {
+    background-color: #f3faf7;
+  }
+  .bg-\[\#f5f9f8\] {
+    background-color: #f5f9f8;
+  }
+  .bg-\[\#f7fafb\] {
+    background-color: #f7fafb;
+  }
+  .bg-\[\#f8fafb\] {
+    background-color: #f8fafb;
+  }
+  .bg-\[\#fff6e6\] {
+    background-color: #fff6e6;
+  }
+  .bg-\[\#fff8ed\] {
+    background-color: #fff8ed;
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .p-\[14px\] {
+    padding: 14px;
+  }
+  .p-\[17px\] {
+    padding: 17px;
+  }
+  .p-\[19px\] {
+    padding: 19px;
+  }
+  .p-\[20px\] {
+    padding: 20px;
+  }
+  .p-\[22px\] {
+    padding: 22px;
+  }
+  .p-\[23px\] {
+    padding: 23px;
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .\!py-10 {
+    padding-block: calc(var(--spacing) * 10) !important;
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
+  }
+  .py-\[9px\] {
+    padding-block: 9px;
+  }
+  .pt-1 {
+    padding-top: calc(var(--spacing) * 1);
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .pt-3 {
+    padding-top: calc(var(--spacing) * 3);
+  }
+  .pb-\[24px\] {
+    padding-bottom: 24px;
+  }
+  .\!pl-9 {
+    padding-left: calc(var(--spacing) * 9) !important;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-\[9px\] {
+    font-size: 9px;
+  }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+  .text-\[11px\] {
+    font-size: 11px;
+  }
+  .text-\[12px\] {
+    font-size: 12px;
+  }
+  .text-\[13px\] {
+    font-size: 13px;
+  }
+  .text-\[16px\] {
+    font-size: 16px;
+  }
+  .text-\[20px\] {
+    font-size: 20px;
+  }
+  .text-\[21px\] {
+    font-size: 21px;
+  }
+  .text-\[clamp\(28px\,3\.4vw\,39px\)\] {
+    font-size: clamp(28px, 3.4vw, 39px);
+  }
+  .leading-\[1\.5\] {
+    --tw-leading: 1.5;
+    line-height: 1.5;
+  }
+  .leading-\[1\.6\] {
+    --tw-leading: 1.6;
+    line-height: 1.6;
+  }
+  .leading-\[1\.7\] {
+    --tw-leading: 1.7;
+    line-height: 1.7;
+  }
+  .leading-\[1\.65\] {
+    --tw-leading: 1.65;
+    line-height: 1.65;
+  }
+  .leading-\[1\.75\] {
+    --tw-leading: 1.75;
+    line-height: 1.75;
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-\[-\.04em\] {
+    --tw-tracking: -.04em;
+    letter-spacing: -.04em;
+  }
+  .tracking-\[-\.05em\] {
+    --tw-tracking: -.05em;
+    letter-spacing: -.05em;
+  }
+  .tracking-\[-\.06em\] {
+    --tw-tracking: -.06em;
+    letter-spacing: -.06em;
+  }
+  .tracking-\[\.11em\] {
+    --tw-tracking: .11em;
+    letter-spacing: .11em;
+  }
+  .tracking-\[\.12em\] {
+    --tw-tracking: .12em;
+    letter-spacing: .12em;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .\!text-\[\#b9e6d8\] {
+    color: #b9e6d8 !important;
+  }
+  .text-\[\#0b8c6f\] {
+    color: #0b8c6f;
+  }
+  .text-\[\#0c8c75\] {
+    color: #0c8c75;
+  }
+  .text-\[\#1b6f62\] {
+    color: #1b6f62;
+  }
+  .text-\[\#2e7165\] {
+    color: #2e7165;
+  }
+  .text-\[\#4a7775\] {
+    color: #4a7775;
+  }
+  .text-\[\#5e8c80\] {
+    color: #5e8c80;
+  }
+  .text-\[\#6b808d\] {
+    color: #6b808d;
+  }
+  .text-\[\#6b8490\] {
+    color: #6b8490;
+  }
+  .text-\[\#7eacb1\] {
+    color: #7eacb1;
+  }
+  .text-\[\#8a9ea8\] {
+    color: #8a9ea8;
+  }
+  .text-\[\#8ba0ac\] {
+    color: #8ba0ac;
+  }
+  .text-\[\#8da2af\] {
+    color: #8da2af;
+  }
+  .text-\[\#9aabb1\] {
+    color: #9aabb1;
+  }
+  .text-\[\#9baeb7\] {
+    color: #9baeb7;
+  }
+  .text-\[\#91a1a9\] {
+    color: #91a1a9;
+  }
+  .text-\[\#93a4ae\] {
+    color: #93a4ae;
+  }
+  .text-\[\#93acbf\] {
+    color: #93acbf;
+  }
+  .text-\[\#94a6b1\] {
+    color: #94a6b1;
+  }
+  .text-\[\#95a4b2\] {
+    color: #95a4b2;
+  }
+  .text-\[\#96a8b3\] {
+    color: #96a8b3;
+  }
+  .text-\[\#117a66\] {
+    color: #117a66;
+  }
+  .text-\[\#164e54\] {
+    color: #164e54;
+  }
+  .text-\[\#264c58\] {
+    color: #264c58;
+  }
+  .text-\[\#274b5b\] {
+    color: #274b5b;
+  }
+  .text-\[\#417d6f\] {
+    color: #417d6f;
+  }
+  .text-\[\#477a80\] {
+    color: #477a80;
+  }
+  .text-\[\#567d75\] {
+    color: #567d75;
+  }
+  .text-\[\#718b95\] {
+    color: #718b95;
+  }
+  .text-\[\#798f9d\] {
+    color: #798f9d;
+  }
+  .text-\[\#869aa5\] {
+    color: #869aa5;
+  }
+  .text-\[\#977c4b\] {
+    color: #977c4b;
+  }
+  .text-\[\#6077ba\] {
+    color: #6077ba;
+  }
+  .text-\[\#8396a0\] {
+    color: #8396a0;
+  }
+  .text-\[\#12866b\] {
+    color: #12866b;
+  }
+  .text-\[\#15906f\] {
+    color: #15906f;
+  }
+  .text-\[\#17836b\] {
+    color: #17836b;
+  }
+  .text-\[\#20394b\] {
+    color: #20394b;
+  }
+  .text-\[\#23485a\] {
+    color: #23485a;
+  }
+  .text-\[\#33566a\] {
+    color: #33566a;
+  }
+  .text-\[\#78919b\] {
+    color: #78919b;
+  }
+  .text-\[\#92784e\] {
+    color: #92784e;
+  }
+  .text-\[\#135740\] {
+    color: #135740;
+  }
+  .text-\[\#204357\] {
+    color: #204357;
+  }
+  .text-\[\#214656\] {
+    color: #214656;
+  }
+  .text-\[\#218577\] {
+    color: #218577;
+  }
+  .text-\[\#274658\] {
+    color: #274658;
+  }
+  .text-\[\#284859\] {
+    color: #284859;
+  }
+  .text-\[\#294556\] {
+    color: #294556;
+  }
+  .text-\[\#294857\] {
+    color: #294857;
+  }
+  .text-\[\#577285\] {
+    color: #577285;
+  }
+  .text-\[\#587280\] {
+    color: #587280;
+  }
+  .text-\[\#718898\] {
+    color: #718898;
+  }
+  .text-\[\#a6bbcc\] {
+    color: #a6bbcc;
+  }
+  .text-\[\#a26b21\] {
+    color: #a26b21;
+  }
+  .text-\[\#aaf1cf\] {
+    color: #aaf1cf;
+  }
+  .text-\[\#b1d2d6\] {
+    color: #b1d2d6;
+  }
+  .text-\[\#b6ccda\] {
+    color: #b6ccda;
+  }
+  .text-\[\#b7fae0\] {
+    color: #b7fae0;
+  }
+  .text-\[\#b9d0d3\] {
+    color: #b9d0d3;
+  }
+  .text-\[\#d0d9df\] {
+    color: #d0d9df;
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .hover\:border-\[\#9bd9c8\] {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #9bd9c8;
+      }
+    }
+  }
+  .hover\:bg-\[\#edf8f4\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #edf8f4;
+      }
+    }
+  }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .sm\:inline-flex {
+    @media (width >= 40rem) {
+      display: inline-flex;
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:gap-3 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 3);
+    }
+  }
+  .sm\:p-6 {
+    @media (width >= 40rem) {
+      padding: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:p-\[22px\] {
+    @media (width >= 40rem) {
+      padding: 22px;
+    }
+  }
+  .sm\:p-\[23px\] {
+    @media (width >= 40rem) {
+      padding: 23px;
+    }
+  }
+  .sm\:p-\[27px\] {
+    @media (width >= 40rem) {
+      padding: 27px;
+    }
+  }
+  .sm\:text-\[13px\] {
+    @media (width >= 40rem) {
+      font-size: 13px;
+    }
+  }
+  .md\:hidden {
+    @media (width >= 48rem) {
+      display: none;
+    }
+  }
+  .md\:\!w-\[185px\] {
+    @media (width >= 48rem) {
+      width: 185px !important;
+    }
+  }
+  .md\:w-\[220px\] {
+    @media (width >= 48rem) {
+      width: 220px;
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:items-center {
+    @media (width >= 48rem) {
+      align-items: center;
+    }
+  }
+  .lg\:inline-flex {
+    @media (width >= 64rem) {
+      display: inline-flex;
+    }
+  }
+  .lg\:grid-cols-2 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-4 {
+    @media (width >= 80rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-\[\.96fr_1\.04fr\] {
+    @media (width >= 80rem) {
+      grid-template-columns: .96fr 1.04fr;
+    }
+  }
+  .xl\:grid-cols-\[\.98fr_1\.02fr\] {
+    @media (width >= 80rem) {
+      grid-template-columns: .98fr 1.02fr;
+    }
+  }
+  .xl\:grid-cols-\[1\.03fr_\.97fr\] {
+    @media (width >= 80rem) {
+      grid-template-columns: 1.03fr .97fr;
+    }
+  }
+  .xl\:grid-cols-\[1\.18fr_\.82fr\] {
+    @media (width >= 80rem) {
+      grid-template-columns: 1.18fr .82fr;
+    }
+  }
+  .xl\:grid-cols-\[1\.35fr_\.95fr\] {
+    @media (width >= 80rem) {
+      grid-template-columns: 1.35fr .95fr;
+    }
+  }
+}
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    color: #182b3c;
+    background: #f5f7fb;
+    font-family: var(--font-sans);
+  }
+  button, input, select {
+    font: inherit;
+  }
+  button {
+    cursor: pointer;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  :focus-visible {
+    outline: 3px solid #5caec5;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: #b9f0e2;
+    color: #153a32;
+  }
+}
+@layer components {
+  .app-shell {
+    min-height: 100vh;
+    display: flex;
+  }
+  .sidebar {
+    width: 258px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: none;
+    background: #10283b;
+    color: #dde6f0;
+    display: flex;
+    flex-direction: column;
+    z-index: 40;
+    border-right: 1px solid rgba(255,255,255,.09);
+  }
+  .brand-box {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,.075);
+  }
+  .brand-icon {
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-items: center;
+    background: #acf0cf;
+    border-radius: 13px;
+    color: #104233;
+    font-size: 19px;
+    font-weight: 850;
+    letter-spacing: -.08em;
+  }
+  .sidebar-group {
+    font-size: 10px;
+    letter-spacing: .13em;
+    color: #7e9aad;
+    font-weight: 800;
+    margin: 25px 22px 10px;
+    text-transform: uppercase;
+  }
+  .sidebar-link {
+    margin: 2px 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: calc(100% - 26px);
+    border-radius: 11px;
+    padding: 12px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a9becd;
+    text-align: left;
+    transition: background .2s,color .2s;
+  }
+  .sidebar-link:hover {
+    background: #19384d;
+    color: #fff;
+  }
+  .sidebar-link.active {
+    background: #204c52;
+    color: #c6ffe3;
+    box-shadow: inset 3px 0 0 #9eeac7;
+  }
+  .sidebar-link svg {
+    width: 18px;
+    height: 18px;
+    flex: none;
+  }
+  .sidebar-badge {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    background: #285169;
+    color: #c1e2ef;
+    border-radius: 8px;
+    min-width: 24px;
+    height: 23px;
+    font-size: 10px;
+  }
+  .side-profile {
+    margin: auto 14px 17px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 17px;
+  }
+  .profile-icon {
+    height: 37px;
+    width: 37px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    color: #fff;
+    background: #39647d;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .main-area {
+    flex: 1;
+    min-width: 0;
+  }
+  .topbar {
+    min-height: 77px;
+    background: #fff;
+    border-bottom: 1px solid #e7ecf1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px clamp(20px,3.2vw,46px);
+  }
+  .top-icon {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #e3eaf0;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: #4e6876;
+    background: white;
+  }
+  .content-wrap {
+    padding: clamp(20px,3vw,44px);
+    max-width: 1550px;
+    margin: auto;
+  }
+  .panel {
+    background: white;
+    border: 1px solid #e5ebef;
+    border-radius: 17px;
+    box-shadow: 0 5px 25px -20px rgba(21,48,78,.25);
+  }
+  .surface-muted {
+    background: #f6f9fa;
+    border: 1px solid #e7edf0;
+    border-radius: 12px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: #679394;
+    text-transform: uppercase;
+  }
+  .page-title {
+    font-size: clamp(26px,2.4vw,36px);
+    font-weight: 770;
+    letter-spacing: -.055em;
+    color: #172e40;
+    line-height: 1.14;
+  }
+  .muted {
+    color: #788b9b;
+  }
+  .section-title {
+    font-size: 17px;
+    font-weight: 770;
+    letter-spacing: -.035em;
+    color: #1c3546;
+  }
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 750;
+    transition: transform .15s,background .15s,border-color .15s;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn-primary {
+    background: #0d7f6e;
+    color: white;
+    border: 1px solid #0d7f6e;
+    box-shadow: 0 5px 14px -9px #0b7764;
+  }
+  .btn-primary:hover {
+    background: #076858;
+  }
+  .btn-secondary {
+    background: white;
+    color: #315065;
+    border: 1px solid #dce6eb;
+  }
+  .btn-secondary:hover {
+    background: #f5faf9;
+  }
+  .btn-dark {
+    background: #17374a;
+    color: white;
+  }
+  .btn-sm {
+    padding: 8px 11px;
+    font-size: 11px;
+    border-radius: 9px;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    background: #eff5f6;
+    color: #567284;
+  }
+  .tag-green {
+    background: #e2f8ec;
+    color: #168363;
+  }
+  .tag-amber {
+    background: #fff4df;
+    color: #a87814;
+  }
+  .tag-blue {
+    background: #e9f2ff;
+    color: #4975b6;
+  }
+  .metric-label {
+    font-size: 11px;
+    font-weight: 650;
+    color: #80909e;
+  }
+  .metric-value {
+    font-size: clamp(22px,2vw,29px);
+    letter-spacing: -.055em;
+    line-height: 1.3;
+    font-weight: 800;
+    color: #172d3b;
+  }
+  .metric-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+  }
+  .field {
+    width: 100%;
+    border: 1px solid #dce6ea;
+    background: #fff;
+    color: #223e4c;
+    border-radius: 10px;
+    min-height: 42px;
+    padding: 10px 12px;
+    outline: none;
+    font-size: 12px;
+    transition: border .15s,box-shadow .15s;
+  }
+  .field:focus {
+    border-color: #48a694;
+    box-shadow: 0 0 0 3px #e0f5ed;
+  }
+  .field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 730;
+    color: #556f7d;
+    margin: 0 0 7px;
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .data-table thead th {
+    font-size: 10px;
+    text-align: left;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+    color: #8296a2;
+    background: #f8fafb;
+    font-weight: 780;
+    padding: 14px 17px;
+    white-space: nowrap;
+  }
+  .data-table tbody td {
+    padding: 15px 17px;
+    border-top: 1px solid #edf1f4;
+    white-space: nowrap;
+  }
+  .data-table tbody tr:hover {
+    background: #fbfdfd;
+  }
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #335264;
+    font-size: 11px;
+    font-weight: 850;
+    flex: none;
+  }
+  .nav-pill {
+    border: 1px solid #e3e9ed;
+    color: #6e8190;
+    font-weight: 650;
+    background: #fff;
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 11px;
+  }
+  .nav-pill.active {
+    background: #dcf5eb;
+    border-color: #abddc6;
+    color: #0c806a;
+  }
+  .rule-card {
+    padding: 18px;
+    border: 1px solid #e6ecf0;
+    border-radius: 13px;
+    background: white;
+  }
+  .progress-track {
+    height: 8px;
+    background: #edf2f4;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: #17a586;
+    border-radius: 100px;
+  }
+  .view-pane {
+    animation: appear .2s ease;
+  }
+  @keyframes appear {
+    from {
+      opacity: .65;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    background: rgba(9,26,39,.58);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    backdrop-filter: blur(3px);
+  }
+  .modal-card {
+    width: min(100%,610px);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 30px 120px rgba(8,30,41,.28);
+    max-height: min(94vh,870px);
+    overflow-y: auto;
+  }
+  .toast {
+    position: fixed;
+    bottom: 22px;
+    right: 20px;
+    z-index: 100;
+    background: #153848;
+    color: #e4fff2;
+    padding: 13px 18px;
+    border: 1px solid #337966;
+    border-radius: 12px;
+    box-shadow: 0 17px 46px #17384844;
+    max-width: min(92vw,440px);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .mini-action {
+    border: 0;
+    color: #0e8673;
+    background: transparent;
+    font-weight: 750;
+    font-size: 11px;
+    padding: 7px 0;
+    cursor: pointer;
+  }
+  .print-only {
+    display: none;
+  }
+  .icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: none;
+  }
+  .symbol-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    display: inline-block;
+    background: #24b58c;
+  }
+  .bar-month {
+    flex: 1;
+    min-height: 3px;
+    border-radius: 5px 5px 2px 2px;
+    background: #c9e5df;
+    transition: background .2s;
+  }
+  .bar-month.highlight {
+    background: #14a38b;
+  }
+  .mobile-backdrop {
+    display: none;
+  }
+  @media (max-width:1060px) {
+    .sidebar {
+      width: 225px;
+    }
+    .sidebar-link {
+      font-size: 12px;
+    }
+  }
+  @media (max-width:820px) {
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateX(-100%);
+      transition: transform .22s;
+      box-shadow: 0 30px 60px #061b2655;
+      width: 264px;
+    }
+    .sidebar.is-open {
+      transform: none;
+    }
+    #menu-btn {
+      display: grid;
+    }
+    .mobile-backdrop.is-open {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(6,19,31,.5);
+      z-index: 35;
+    }
+    .topbar {
+      min-height: 66px;
+      padding: 12px 18px;
+    }
+  }
+  @media (max-width:640px) {
+    .content-wrap {
+      padding: 18px 14px;
+    }
+    .data-table thead th,.data-table tbody td {
+      padding: 12px 13px;
+    }
+    .data-table {
+      font-size: 11px;
+    }
+    .panel {
+      border-radius: 13px;
+    }
+  }
+  @media print {
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+    body {
+      background: white !important;
+      color: #152b39 !important;
+    }
+    #app {
+      display: none !important;
+    }
+    .print-only {
+      display: block !important;
+      padding: 20px;
+      color: #192c38;
+      font: 12px/1.6 Arial,sans-serif;
+    }
+    .print-title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .print-only table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .print-only td,.print-only th {
+      border-bottom: 1px solid #d9e1e5;
+      padding: 8px;
+      text-align: left;
+    }
+    .print-only .total {
+      font-size: 18px;
+      font-weight: 800;
+      padding-top: 15px;
+    }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    * {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-space-y-reverse: 0;
+      --tw-divide-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+    }
+  }
+}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.3"/><path d="M3.6 20v-1.5a5.4 5.4 0 0 1 10.8 0V20H3.6zM16 5.7a3 3 0 0 1 0 5.7M17 15a4.7 4.7 0 0 1 3.5 4.5"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M5 6V4.5A1.5 1.5 0 0 1 6.5 3H18"/><path d="M16.5 15h2"/></symbol>
+<symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5 3h14v18l-3.5-2-3.5 2-3.5-2L5 21V3zM9 8h6M9 12h6M9 16h3"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5zM4 17a2.5 2.5 0 0 1 2.5-2.5H20M9 8h6"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="white"/><circle cx="16" cy="17" r="2" fill="white"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9zM10 21h4"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.7"/><path d="m16 16 4.2 4.2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v5c0 5.5-3.5 8.6-8 11-4.5-2.4-8-5.5-8-11V6l8-4zM9 12l2 2 4-4"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16l4-4 3 2 5-7"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+<symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4V9h16v9h-2M6 15h12v6H6zM17 12h.01"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></symbol>
+</svg>
+<div id="app" class="app-shell">
+  <div id="mobile-backdrop" class="mobile-backdrop"></div>
+  <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+    <div class="brand-box"><div class="brand-icon">N<span class="text-[12px]">✓</span></div><div><div class="text-[16px] text-white font-extrabold tracking-[-.06em]">nómina<span class="text-[#aaf1cf]">clara.</span></div><div class="text-[9px] tracking-[.11em] uppercase text-[#7eacb1] font-bold">Edición Venezuela</div></div></div>
+    <div class="sidebar-group">Principal</div>
+    <nav class="flex flex-col" id="side-nav">
+      <button class="sidebar-link active" data-view="dashboard"><svg class="icon"><use href="#i-grid"/></svg> Vista general</button>
+      <button class="sidebar-link" data-view="employees"><svg class="icon"><use href="#i-users"/></svg> Trabajadores <span class="sidebar-badge" id="sidebar-count">6</span></button>
+      <button class="sidebar-link" data-view="payroll"><svg class="icon"><use href="#i-wallet"/></svg> Procesar nómina</button>
+      <button class="sidebar-link" data-view="receipts"><svg class="icon"><use href="#i-receipt"/></svg> Recibos de pago</button>
+    </nav>
+    <div class="sidebar-group">Gestión y normativa</div>
+    <nav class="flex flex-col" id="side-nav-secondary">
+      <button class="sidebar-link" data-view="benefits"><svg class="icon"><use href="#i-book"/></svg> Prestaciones</button>
+      <button class="sidebar-link" data-view="settings"><svg class="icon"><use href="#i-sliders"/></svg> Parámetros legales</button>
+    </nav>
+    <div class="mx-[14px] mt-[32px] rounded-[14px] border border-[#326273] bg-[#1a3d50] p-[17px]">
+      <div class="mb-3 flex items-center gap-2 text-[#b7fae0] font-semibold text-[12px]"><svg class="icon" style="width:16px;height:16px"><use href="#i-shield"/></svg> Entorno demostrativo</div>
+      <p class="text-[11px] leading-[1.7] text-[#a6bbcc]">Datos inventados. No se realizan pagos, declaraciones ni conexiones bancarias.</p>
+    </div>
+    <div class="side-profile flex items-center gap-3"><div class="profile-icon">DR</div><div class="min-w-0"><div class="text-[12px] font-bold text-white">Demo RR. HH.</div><div class="text-[10px] text-[#93acbf]">Acceso de demostración</div></div><div class="ml-auto w-[7px] h-[7px] rounded-full bg-[#9ce9c2]"></div></div>
+  </aside>
+  <div class="main-area">
+    <header class="topbar">
+      <div class="flex min-w-0 items-center gap-3">
+        <button id="menu-btn" class="top-icon md:hidden" aria-label="Abrir menú" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <div class="min-w-0"><div class="text-[11px] text-[#95a4b2] font-semibold">Espacio de trabajo <span class="mx-2 text-[#d0d9df]">/</span> <span id="crumb" class="text-[#477a80]">Vista general</span></div><div class="text-[13px] text-[#20394b] font-bold mt-1 truncate">Inversiones Horizonte, C.A. <span class="text-[10px] text-[#94a6b1] font-medium">(ficticia)</span></div></div>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <span class="hidden sm:inline-flex tag tag-amber"><span class="w-[6px] h-[6px] rounded-full bg-[#dfa041]"></span> MODO DEMO</span>
+        <span class="hidden lg:inline-flex items-center gap-2 text-[#718898] text-[11px]"><svg class="icon" style="width:15px;height:15px"><use href="#i-calendar"/></svg> Noviembre 2026</span>
+        <button id="help-button" class="top-icon" title="Ver fuentes legales" aria-label="Ver fuentes legales"><svg class="icon"><use href="#i-info"/></svg></button>
+        <div class="w-[38px] h-[38px] bg-[#d9f4ea] text-[#17836b] rounded-[12px] grid place-items-center text-[11px] font-extrabold">RH</div>
+      </div>
+    </header>
+    <main id="main-content" class="content-wrap" tabindex="-1">
+      <div class="mb-6 flex flex-wrap gap-3 justify-between items-start">
+        <div><div class="eyebrow mb-2">PLATAFORMA DE NÓMINA · VENEZUELA</div><h1 class="page-title" id="page-heading">Control de tu equipo, con claridad.</h1><p class="mt-2 text-[12px] sm:text-[13px] muted max-w-[710px] leading-[1.7]" id="page-subtitle">Un vistazo al equipo, los pagos y las obligaciones laborales de tu empresa.</p></div>
+        <div class="flex gap-2" id="top-actions"><button class="btn btn-secondary" data-action="csv"><svg class="icon" style="width:15px;height:15px"><use href="#i-download"/></svg> Exportar CSV</button><button class="btn btn-primary" data-action="navigate" data-target="payroll"><svg class="icon" style="width:15px;height:15px"><use href="#i-plus"/></svg> Nueva nómina</button></div>
+      </div>
+      <div class="rounded-[12px] border border-[#d4e9e8] bg-[#eaf7f4] px-4 py-3 mb-6 flex gap-3 items-start"><svg class="icon mt-[1px] text-[#218577]" style="width:17px;height:17px"><use href="#i-info"/></svg><p class="text-[11px] leading-[1.65] text-[#4a7775]"><strong>Demostración educativa, no sistema contable certificado.</strong> Cifras, salarios, nombres y tasa de cambio son ficticios. Las fórmulas simplificadas no sustituyen una liquidación real ni asesoría profesional.</p></div>
+      <div id="view-dashboard" class="view-pane"></div>
+      <div id="view-employees" class="view-pane" hidden></div>
+      <div id="view-payroll" class="view-pane" hidden></div>
+      <div id="view-receipts" class="view-pane" hidden></div>
+      <div id="view-benefits" class="view-pane" hidden></div>
+      <div id="view-settings" class="view-pane" hidden></div>
+      <footer class="mt-10 py-5 border-t border-[#e3eaf0] flex flex-wrap items-center justify-between gap-3 text-[10px] text-[#96a8b3]"><span>© 2026 Nómina Clara VE · Proyecto conceptual para demostración de interfaces.</span><span>Sin API · Sin almacenamiento · Sin envíos reales</span></footer>
+    </main>
+  </div>
+</div>
+<div id="modal-root" hidden></div>
+<div id="toast-root" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="print-area" class="print-only"></div>
+<script>
+(()=>{'use strict';
+  const ICON=(name,size=18)=>`<svg class="icon" style="width:${size}px;height:${size}px" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+  const safe=(text)=>String(text ?? '').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const Bs=(n)=>'Bs. '+Number(n||0).toLocaleString('es-VE',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmt=(n)=>Number(n||0).toLocaleString('es-VE',{maximumFractionDigits:2});
+  const datefmt=(d)=>new Date(d+'T12:00:00').toLocaleDateString('es-VE',{day:'2-digit',month:'short',year:'numeric'});
+  const get=(id)=>document.getElementById(id);
+  const clamp=(v,min,max)=>Math.min(max,Math.max(min,Number.isFinite(+v)?+v:min));
+  const employees=[
+    {id:'EMP-001',name:'Andrea Rojas',job:'Coordinadora administrativa',dept:'Administración',salary:72000,start:'2021-03-15',color:'#d5e7f8',init:'AR'},
+    {id:'EMP-002',name:'Luis Méndez',job:'Ejecutivo comercial',dept:'Ventas',salary:59000,start:'2023-08-07',color:'#f5e4ca',init:'LM'},
+    {id:'EMP-003',name:'Valentina Suárez',job:'Analista de sistemas',dept:'Tecnología',salary:81800,start:'2022-01-10',color:'#d8e7dc',init:'VS'},
+    {id:'EMP-004',name:'Carlos Blanco',job:'Soporte al cliente',dept:'Atención al cliente',salary:44200,start:'2024-07-01',color:'#e8e1f5',init:'CB'},
+    {id:'EMP-005',name:'Mariana Pérez',job:'Contadora',dept:'Finanzas',salary:65500,start:'2020-02-17',color:'#f5dddf',init:'MP'},
+    {id:'EMP-006',name:'José Álvarez',job:'Supervisor de operaciones',dept:'Operaciones',salary:47500,start:'2025-05-05',color:'#dceceb',init:'JA'}
+  ];
+  const params={minWage:130,usd:850,foodUSD:40,utilsDays:30,bonusDays:15};
+  const periods={first:{label:'Primera quincena',days:15,start:'2026-11-01',end:'2026-11-15'},second:{label:'Segunda quincena',days:15,start:'2026-11-16',end:'2026-11-30'},month:{label:'Nómina mensual',days:30,start:'2026-11-01',end:'2026-11-30'}};
+  const state={view:'dashboard',period:'first',payEmployee:'EMP-001',filter:'',department:'Todos',overtime:0,night:0,bonus:0,absence:0,other:0,benefitEmployee:'EMP-001',selectedReceipt:'EMP-001'};
+  const weeklyDays=(period)=>{let c=0;for(let d=new Date(period.start+'T12:00:00');d<=new Date(period.end+'T12:00:00');d.setDate(d.getDate()+1)){if(d.getDay()===1)c++}return c};
+  const seniority=(start)=>{const a=new Date(start+'T12:00:00'),b=new Date('2026-11-12T12:00:00');let y=b.getFullYear()-a.getFullYear();if(b.getMonth()<a.getMonth()||(b.getMonth()===a.getMonth()&&b.getDate()<a.getDate()))y--;return Math.max(0,y)};
+  const calc=(employee,opts={},periodKey=state.period)=>{
+    const p=periods[periodKey];const daily=employee.salary/30;const hourly=daily/8;
+    const overtime=clamp(opts.overtime??0,0,80),night=clamp(opts.night??0,0,160),bonus=clamp(opts.bonus??0,0,10000000),absence=clamp(opts.absence??0,0,p.days),other=clamp(opts.other??0,0,10000000);
+    const wage=daily*(p.days-absence),overtimePay=hourly*1.5*overtime,nightPay=hourly*.3*night;
+    const gross=wage+overtimePay+nightPay+bonus;
+    const mondays=weeklyDays(p);
+    // Solo una estimación didáctica. En nóminas reales deben evaluarse períodos/altas/bajas y topes aplicables.
+    const sso=(Math.min(employee.salary,params.minWage*5)*12/52)*.04*mondays;
+    const rpe=(Math.min(Math.max(employee.salary,params.minWage),params.minWage*10)*12/52)*.005*mondays;
+    const integralRatio=1+params.utilsDays/360+params.bonusDays/360;
+    const faov=gross*integralRatio*.01;
+    const food=params.foodUSD*params.usd*(p.days/30);
+    const discounts=sso+rpe+faov+other;
+    const net=gross+food-discounts;
+    return {p,daily,hourly,wage,overtime,night,bonus,absence,other,overtimePay,nightPay,gross,sso,rpe,faov,discounts,food,net,mondays,integralRatio};
+  };
+  const selectedEmployee=()=>employees.find(e=>e.id===state.payEmployee)||employees[0];
+  const avatar=(e)=>`<span class="avatar" style="background:${safe(e.color)}">${safe(e.init)}</span>`;
+  const html=(id,markup)=>{get(id).innerHTML=markup};
+  let toastTimer;
+  const toast=(msg)=>{const el=get('toast-root');el.textContent=msg;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.hidden=true,4000)};
+  const metrics=()=>{
+    const totals=employees.map(e=>calc(e,e.id===state.payEmployee?payOpts():{}));const gross=totals.reduce((a,p)=>a+p.gross,0),discounts=totals.reduce((a,p)=>a+p.discounts,0),net=totals.reduce((a,p)=>a+p.net,0),food=totals.reduce((a,p)=>a+p.food,0);
+    return {gross,discounts,net,food};
+  };
+  const periodsSelect=(id='period-select')=>`<select class="field max-w-[245px]" id="${id}" aria-label="Seleccionar período">${Object.entries(periods).map(([key,p])=>`<option value="${key}" ${key===state.period?'selected':''}>${p.label} · Nov 2026</option>`).join('')}</select>`;
+  const pageMap={dashboard:['Vista general','Control de tu equipo, con claridad.','Un vistazo al equipo, los pagos y las obligaciones laborales de tu empresa.'],employees:['Trabajadores','Personas detrás de cada resultado.','Directorio de empleados ficticios, cargos, departamentos y salarios.'],payroll:['Procesar nómina','Una nómina clara, paso a paso.','Simula asignaciones y retenciones con parámetros referenciales de Venezuela.'],receipts:['Recibos de pago','Cada concepto, con transparencia.','Consulta y descarga recibos de simulación; no representan pagos reales.'],benefits:['Prestaciones','Anticipa tus obligaciones laborales.','Referencias educativas basadas en artículos de la LOTTT, sin saldos históricos reales.'],settings:['Parámetros legales','Configura tus supuestos de cálculo.','Valores de ejemplo editables; consulta la normativa vigente antes de realizar pagos.']};
+  function navigate(view){if(!pageMap[view])return;state.view=view;for(const key of Object.keys(pageMap)){get('view-'+key).hidden=key!==view;}get('crumb').textContent=pageMap[view][0];get('page-heading').textContent=pageMap[view][1];get('page-subtitle').textContent=pageMap[view][2];document.querySelectorAll('.sidebar-link').forEach(x=>x.classList.toggle('active',x.dataset.view===view));get('top-actions').innerHTML=view==='employees'?`<button class="btn btn-primary" data-action="add-employee">${ICON('plus',15)} Añadir trabajador</button>`:view==='payroll'?`<button class="btn btn-secondary" data-action="navigate" data-target="receipts">${ICON('receipt',15)} Ver recibos</button>`:view==='settings'?`<button class="btn btn-secondary" data-action="reset-params">Restablecer valores</button>`:`<button class="btn btn-secondary" data-action="csv">${ICON('download',15)} Exportar CSV</button><button class="btn btn-primary" data-action="navigate" data-target="payroll">${ICON('plus',15)} Simular nómina</button>`;
+    closeMenu();render();window.scrollTo({top:0,behavior:'instant'});
+  }
+  function render(){if(state.view==='dashboard')renderDashboard();else if(state.view==='employees')renderEmployees();else if(state.view==='payroll')renderPayroll();else if(state.view==='receipts')renderReceipts();else if(state.view==='benefits')renderBenefits();else renderSettings();get('sidebar-count').textContent=employees.length;}
+  const metricCard=(name,value,ic,accent,sub)=>`<article class="panel p-[20px] sm:p-[22px] flex flex-col gap-[14px]"><div class="flex items-center justify-between gap-2"><span class="metric-label">${name}</span><span class="metric-icon" style="background:${accent[0]};color:${accent[1]}">${ICON(ic,19)}</span></div><div class="metric-value">${value}</div><div class="text-[10px] text-[#869aa5]">${sub}</div></article>`;
+  function renderDashboard(){const m=metrics();const deps={};employees.forEach(e=>{deps[e.dept]=(deps[e.dept]||0)+calc(e).net});let max=Math.max(...Object.values(deps));
+    const bars=[.57,.67,.61,.75,.71,.82,.78,.84,.79,.92,.87,1];
+    html('view-dashboard',`
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-5"><div class="flex items-center gap-2"><span class="tag tag-green">${ICON('check',12)} Período demostrativo</span><span class="text-[11px] muted">${datefmt(periods[state.period].start)} – ${datefmt(periods[state.period].end)}</span></div>${periodsSelect('dashboard-period')}</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      ${metricCard('Neto a entregar',Bs(m.net),'wallet',['#daf4e9','#0b8f72'],'Incluye beneficio alimentario estimado')}
+      ${metricCard('Trabajadores activos',fmt(employees.length),'users',['#e7efff','#5279c4'],'Equipo de ejemplo · 100 % activo')}
+      ${metricCard('Asignaciones salariales',Bs(m.gross),'chart',['#fff2dc','#c69543'],'Salario base y recargos simulados')}
+      ${metricCard('Retenciones referenciales',Bs(m.discounts),'shield',['#f4eaf7','#ac75b9'],'IVSS, RPE y FAOV aproximados')}
+      </div>
+      <div class="mt-5 grid grid-cols-1 xl:grid-cols-[1.35fr_.95fr] gap-5">
+        <section class="panel p-[22px] sm:p-[27px]"><div class="flex flex-wrap justify-between items-start gap-3 mb-5"><div><h2 class="section-title">Tendencia de nómina</h2><p class="text-[11px] muted mt-1">Valores ilustrativos de enero a diciembre 2026</p></div><span class="tag">${ICON('chart',13)} Resumen anual</span></div>
+        <div class="flex items-end gap-2 sm:gap-3 h-[194px] pt-2 pb-[24px] border-b border-[#edf1f4] relative">${bars.map((n,i)=>`<div class="flex-1 h-full flex items-end relative group"><div class="bar-month ${i===10?'highlight':''}" style="height:${Math.round(n*100)}%" title="${['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][i]} · dato de muestra"></div></div>`).join('')}</div>
+        <div class="flex gap-2 sm:gap-3 mt-3">${['E','F','M','A','M','J','J','A','S','O','N','D'].map((k,i)=>`<div class="flex-1 text-center text-[10px] ${i===10?'text-[#0c8d71] font-bold':'text-[#9aabb3]'}">${k}</div>`).join('')}</div>
+        <div class="mt-6 p-[14px] rounded-[11px] bg-[#f5f9f8] flex items-center justify-between gap-3"><div><div class="text-[10px] muted">Estimación período seleccionado</div><div class="text-[20px] tracking-[-.05em] font-extrabold text-[#23485a] mt-1">${Bs(m.gross)}</div></div><span class="tag tag-green">${ICON('check',12)} Ejemplo ilustrativo</span></div>
+        </section>
+        <section class="panel p-[22px] sm:p-[27px]"><div class="flex items-start justify-between gap-2 mb-5"><div><h2 class="section-title">Costo neto por departamento</h2><p class="text-[11px] muted mt-1">Distribución estimada del período</p></div>${ICON('briefcase',18)}</div>
+          <div class="space-y-[17px]">${Object.entries(deps).map(([dept,val])=>`<div><div class="flex justify-between text-[11px] mb-[7px]"><span class="font-semibold text-[#587280]">${safe(dept)}</span><span class="font-bold text-[#33566a]">${Bs(val)}</span></div><div class="progress-track"><div class="progress-fill" style="width:${(val/max*100).toFixed(1)}%"></div></div></div>`).join('')}</div>
+        </section>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
+      <section class="panel p-[23px]"><div class="flex items-center justify-between gap-3 mb-5"><div><h2 class="section-title">Accesos rápidos</h2><p class="text-[11px] muted mt-1">Continúa explorando la demostración</p></div></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><button class="text-left surface-muted p-4 hover:bg-[#edf8f4] transition-colors" data-action="navigate" data-target="payroll"><span class="w-9 h-9 bg-[#d4f3e8] text-[#15906f] rounded-[10px] grid place-items-center mb-3">${ICON('wallet',18)}</span><span class="text-[12px] text-[#204357] font-bold block">Calcular nómina</span><span class="text-[10px] muted mt-1 block">Prueba recargos y descuentos</span></button><button class="text-left surface-muted p-4 hover:bg-[#edf8f4] transition-colors" data-action="navigate" data-target="benefits"><span class="w-9 h-9 bg-[#e5eaff] text-[#6077ba] rounded-[10px] grid place-items-center mb-3">${ICON('book',18)}</span><span class="text-[12px] text-[#204357] font-bold block">Ver prestaciones</span><span class="text-[10px] muted mt-1 block">Vacaciones y garantía trimestral</span></button></div>
+      </section>
+      <section class="panel p-[23px] bg-[#14364a] !border-[#14364a] text-white"><div class="flex items-center justify-between"><span class="tag !bg-[#225064] !text-[#b9e6d8]">NORMATIVA VENEZOLANA</span>${ICON('shield',18)}</div><h2 class="text-[21px] tracking-[-.05em] font-bold mt-6">Lo legal, siempre visible.</h2><p class="text-[12px] text-[#b6ccda] leading-[1.7] mt-2">Referencias a la LOTTT, aportes IVSS, RPE y FAOV. Fórmulas simplificadas para explorar escenarios, no para cerrar nóminas reales.</p><button data-action="navigate" data-target="settings" class="btn bg-[#b3f2d1] text-[#135740] mt-5">Consultar parámetros ${ICON('arrow',15)}</button></section>
+      </div>`);
+  }
+  function renderEmployees(){const filtered=employees.filter(e=>(e.name+' '+e.job+' '+e.id).toLowerCase().includes(state.filter.toLowerCase())&&(state.department==='Todos'||e.dept===state.department));const deps=['Todos',...new Set(employees.map(e=>e.dept))];
+   html('view-employees',`<section class="panel overflow-hidden"><div class="p-5 sm:p-[23px] flex flex-col md:flex-row md:items-center justify-between gap-4"><div><h2 class="section-title">Directorio de trabajadores <span class="tag ml-1">${employees.length} registros</span></h2><p class="text-[11px] muted mt-1">Datos inventados · No constituyen expedientes laborales.</p></div><div class="flex flex-wrap gap-2"><label class="relative flex-1 md:w-[220px]"><span class="sr-only">Buscar trabajador</span><span class="absolute left-3 top-[13px] text-[#8da2af]">${ICON('search',15)}</span><input id="employee-filter" class="field !pl-9" placeholder="Buscar trabajador..." value="${safe(state.filter)}"/></label><select id="dept-filter" aria-label="Filtrar departamento" class="field md:!w-[185px]">${deps.map(d=>`<option ${d===state.department?'selected':''}>${safe(d)}</option>`).join('')}</select></div></div>
+    <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>Trabajador</th><th>Departamento</th><th>Ingreso</th><th>Salario mensual</th><th>Estado</th><th>Acción</th></tr></thead><tbody>${filtered.map(e=>`<tr><td><div class="flex items-center gap-3">${avatar(e)}<span><strong class="text-[#294556] text-[12px]">${safe(e.name)}</strong><span class="block text-[10px] muted mt-1">${safe(e.job)} · ${safe(e.id)}</span></span></div></td><td class="text-[#577285]">${safe(e.dept)}</td><td class="text-[#577285]">${datefmt(e.start)}</td><td class="font-bold text-[#274b5b]">${Bs(e.salary)}</td><td><span class="tag tag-green"><span class="symbol-dot"></span>Activo</span></td><td><button class="mini-action" data-action="worker-pay" data-id="${safe(e.id)}">Simular pago ${ICON('arrow',13)}</button></td></tr>`).join('')||`<tr><td colspan="6" class="text-center !py-10 text-[#8ba0ac]">No hay coincidencias para tu búsqueda.</td></tr>`}</tbody></table></div><div class="p-4 border-t border-[#ebeff3] flex flex-wrap justify-between gap-2 text-[11px] text-[#8ba0ac]"><span>Mostrando ${filtered.length} de ${employees.length} trabajadores.</span><span>Información temporal; se reinicia al recargar.</span></div></section>`);
+  }
+  const fieldNum=(id,label,value,help,min=0,max=100000)=>`<label><span class="field-label">${label}</span><input class="field" type="number" step="0.01" min="${min}" max="${max}" id="${id}" value="${safe(value)}" />${help?`<span class="block mt-[5px] text-[10px] text-[#9baeb7] leading-[1.5]">${help}</span>`:''}</label>`;
+  const payOpts=()=>({overtime:state.overtime,night:state.night,bonus:state.bonus,absence:state.absence,other:state.other});
+  function renderPayroll(){const e=selectedEmployee(),c=calc(e,payOpts());
+    html('view-payroll',`<div class="grid xl:grid-cols-[1.03fr_.97fr] gap-5">
+    <section class="panel p-[22px] sm:p-[27px]"><div class="flex items-center gap-3 mb-6"><span class="w-[42px] h-[42px] rounded-[12px] bg-[#d9f5e8] text-[#0b8c6f] grid place-items-center">${ICON('sliders',21)}</span><div><h2 class="section-title">Configurar la simulación</h2><p class="text-[11px] muted mt-1">Modifica los conceptos y observa el resultado.</p></div></div>
+    <div class="space-y-[20px]"><label><span class="field-label">Trabajador</span><select class="field" id="pay-worker">${employees.map(w=>`<option value="${safe(w.id)}" ${w.id===state.payEmployee?'selected':''}>${safe(w.name)} · ${safe(w.dept)}</option>`).join('')}</select></label>
+    <label><span class="field-label">Período</span>${periodsSelect('pay-period')}</label>
+    <div class="surface-muted flex justify-between items-center p-4"><div><div class="text-[10px] muted">Salario normal mensual del trabajador</div><div class="text-[20px] tracking-[-.04em] font-extrabold text-[#214656] mt-1">${Bs(e.salary)}</div></div><span class="tag tag-blue">Base 30 días</span></div>
+    <div class="grid grid-cols-2 gap-4">${fieldNum('pay-overtime','Horas extra diurnas',state.overtime,'Recargo total ilustrativo 150 %',0,80)}${fieldNum('pay-night','Horas nocturnas',state.night,'Solo recargo de 30 %, sin duplicar base',0,160)}${fieldNum('pay-bonus','Prima salarial adicional (Bs.)',state.bonus,'Importe ficticio sujeto a salario',0,10000000)}${fieldNum('pay-absence','Días de ausencia',state.absence,'Se descuentan del salario base',0,c.p.days)}${fieldNum('pay-other','Otras deducciones (Bs.)',state.other,'Importe manual, solo demostración',0,10000000)}</div>
+    <div class="flex flex-wrap gap-2 pt-2"><button class="btn btn-primary flex-1" data-action="generate-receipt">${ICON('receipt',16)} Ver recibo simulado</button><button class="btn btn-secondary" data-action="reset-pay">Restablecer</button></div>
+    </div></section>
+    <div class="space-y-5">
+    <section class="panel p-[22px] sm:p-[27px]"><div class="flex items-center justify-between gap-3 mb-6"><div><h2 class="section-title">Vista previa de pago</h2><p class="text-[11px] muted mt-1">${safe(c.p.label)} · ${datefmt(c.p.start)} – ${datefmt(c.p.end)}</p></div><span class="tag tag-green">${ICON('check',12)} En vivo</span></div>
+    <div class="rounded-[15px] bg-[#153b4b] p-[22px] text-white mb-5"><span class="text-[11px] text-[#b1d2d6]">Total neto estimado</span><div class="text-[clamp(28px,3.4vw,39px)] font-extrabold tracking-[-.06em] mt-2" id="pay-net">${Bs(c.net)}</div><div class="text-[10px] text-[#b9d0d3] mt-2">Incluye alimentación estimada, por separado del salario.</div></div>
+    <div id="pay-preview">${renderPayBreakdown(c)}</div>
+    </section>
+    <div class="rounded-[14px] bg-[#fff8ed] border border-[#f3e4c9] p-[19px]"><div class="flex gap-2 text-[#a26b21] font-bold text-[12px]">${ICON('info',16)} Nota sobre cotizaciones</div><p class="mt-2 text-[11px] text-[#92784e] leading-[1.7]">El IVSS y RPE se estiman por lunes con topes de referencia; el FAOV utiliza una base integral aproximada. No se calcula ISLR, incidencias complejas ni liquidaciones oficiales. Verifica bases y vigencia antes de pagar.</p></div>
+    </div></div>`);
+    ['pay-overtime','pay-night','pay-bonus','pay-absence','pay-other'].forEach((id,i)=>get(id).addEventListener('input',()=>{const prop=['overtime','night','bonus','absence','other'][i];state[prop]=clamp(get(id).value,0,prop==='absence'?periods[state.period].days:1e7);const d=calc(selectedEmployee(),payOpts());get('pay-net').textContent=Bs(d.net);get('pay-preview').innerHTML=renderPayBreakdown(d)}));
+  }
+  const payRow=(name,amt,negative=false,bold=false)=>`<div class="flex justify-between items-start gap-3 py-[9px] text-[11px] ${bold?'font-bold':''}"><span class="text-[#6b8490]">${name}</span><span class="whitespace-nowrap font-semibold ${negative?'text-[#c87964]':'text-[#345665]'}">${negative?'− ':''}${Bs(amt)}</span></div>`;
+  function renderPayBreakdown(c){return `<div class="text-[10px] font-extrabold tracking-[.12em] text-[#9aabb1] mb-[5px]">ASIGNACIONES</div>${payRow('Salario del período',c.wage)}${c.overtimePay?payRow(`Horas extra (${fmt(c.overtime)} h)`,c.overtimePay):''}${c.nightPay?payRow(`Recargo nocturno (${fmt(c.night)} h)`,c.nightPay):''}${c.bonus?payRow('Prima salarial',c.bonus):''}<div class="border-t border-[#ebf0f2] my-2"></div>${payRow('Total salarial bruto',c.gross,false,true)}${payRow('Beneficio de alimentación (no salarial)',c.food)}<div class="text-[10px] font-extrabold tracking-[.12em] text-[#9aabb1] mt-4 mb-1">RETENCIONES ESTIMADAS</div>${payRow(`IVSS 4 % · ${c.mondays} lunes`,c.sso,true)}${payRow('RPE 0,5 %',c.rpe,true)}${payRow('FAOV 1 % (base ilustrativa)',c.faov,true)}${c.other?payRow('Otras deducciones',c.other,true):''}<div class="border-t border-[#ebf0f2] mt-2 pt-2">${payRow('Total descuentos',c.discounts,true,true)}</div>`}
+  function renderReceipts(){const m=metrics();html('view-receipts',`<div class="grid grid-cols-1 xl:grid-cols-[.98fr_1.02fr] gap-5"><section class="panel overflow-hidden"><div class="p-5 sm:p-6 border-b border-[#edf1f3] flex items-center justify-between gap-2"><div><h2 class="section-title">Recibos del período</h2><p class="text-[11px] muted mt-1">Registros simulados, generados en pantalla.</p></div><span class="tag">${safe(periods[state.period].label)}</span></div><div class="divide-y divide-[#edf1f4]">${employees.map(e=>{const c=calc(e,e.id===state.payEmployee?payOpts():{});return `<button class="w-full text-left flex items-center gap-3 px-5 py-4 transition-colors ${e.id===state.selectedReceipt?'bg-[#eaf8f2]':'hover:bg-[#f8fafb]'}" data-action="select-receipt" data-id="${safe(e.id)}">${avatar(e)}<span class="flex-1 min-w-0"><strong class="text-[#274658] block text-[12px]">${safe(e.name)}</strong><small class="text-[#93a4ae] block mt-1 text-[10px]">${safe(e.id)} · ${safe(e.dept)}</small></span><strong class="text-[#1b6f62] text-[12px] whitespace-nowrap">${Bs(c.net)}</strong>${ICON('chevron',14)}</button>`}).join('')}</div><div class="p-5 bg-[#f8fafb] flex justify-between items-center text-[11px]"><span class="text-[#8396a0]">Neto conjunto (simulado)</span><strong class="text-[#264c58]">${Bs(m.net)}</strong></div></section><section class="panel p-5 sm:p-6" id="receipt-detail"></section></div>`);showReceiptDetail();}
+  function receiptHTML(e,c){return `<div class="flex items-center justify-between mb-5 gap-3"><div><h3 class="section-title">Recibo de pago</h3><p class="mt-1 text-[11px] muted">Vista previa · ${safe(c.p.label)}</p></div><span class="tag tag-amber">DEMO</span></div><div class="rounded-[13px] border border-[#e4edee] bg-[#f7fafb] p-4 mb-5"><div class="text-[11px] text-[#78919b]">INVERSIONES HORIZONTE, C.A. · Empresa ficticia</div><div class="flex items-center gap-3 mt-4">${avatar(e)}<div><strong class="text-[13px] text-[#284859]">${safe(e.name)}</strong><div class="text-[10px] muted mt-1">${safe(e.job)} · ${safe(e.id)}</div></div></div><div class="flex flex-wrap justify-between mt-4 gap-2 text-[10px] text-[#718b95]"><span>Desde ${datefmt(c.p.start)}</span><span>Hasta ${datefmt(c.p.end)}</span></div></div><div>${renderPayBreakdown(c)}</div><div class="mt-5 rounded-[13px] bg-[#e7f6ef] p-[17px] flex justify-between gap-3 items-center"><span class="text-[11px] font-semibold text-[#417d6f]">Total neto estimado</span><strong class="text-[21px] text-[#117a66] tracking-[-.05em]">${Bs(c.net)}</strong></div><div class="flex gap-2 flex-wrap mt-4"><button class="btn btn-primary" data-action="print-receipt">${ICON('print',15)} Imprimir / PDF</button><button class="btn btn-secondary" data-action="csv">${ICON('download',15)} CSV</button></div><p class="text-[10px] muted mt-5 leading-[1.7]">Documento de muestra. No acredita pago ni obligaciones. Retenciones y prestaciones están simplificadas para fines de demostración.</p>`}
+  function showReceiptDetail(){const e=employees.find(x=>x.id===state.selectedReceipt)||employees[0];const c=calc(e,e.id===state.payEmployee?payOpts():{});html('receipt-detail',receiptHTML(e,c));}
+  function renderBenefits(){const e=employees.find(x=>x.id===state.benefitEmployee)||employees[0],years=seniority(e.start),vacDays=years>=1?15+Math.min(15,years-1):0,bonusDays=years>=1?Math.min(30,15+years):0;
+    const monthlyIntegral=e.salary*(1+params.utilsDays/360+params.bonusDays/360),dailyIntegral=monthlyIntegral/30;
+    html('view-benefits',`<div class="mb-5 flex flex-wrap items-center justify-between gap-3"><div><span class="tag tag-blue">${ICON('book',13)} LOTTT como referencia</span></div><label class="flex items-center gap-2"><span class="text-[11px] text-[#6b808d]">Trabajador</span><select class="field max-w-[260px]" id="benefit-worker">${employees.map(w=>`<option value="${safe(w.id)}" ${w.id===e.id?'selected':''}>${safe(w.name)}</option>`).join('')}</select></label></div>
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+    ${metricCard('Años completos de servicio',fmt(years),'clock',['#e4f2fa','#5284ac'],`Ingreso: ${datefmt(e.start)}`)}
+    ${metricCard('Vacaciones anuales',`${vacDays} días hábiles`,'calendar',['#dff5e8','#24896b'],'LOTTT artículo 190 · derecho anual')}
+    ${metricCard('Bono vacacional referencial',`${bonusDays} días`,'wallet',['#fff0dc','#bb9246'],'LOTTT artículo 192 · mínimos legales')}
+    ${metricCard('Garantía de un trimestre',Bs(15*dailyIntegral),'shield',['#f0eafa','#896cb1'],'15 días de salario integral aproximado')}
+    </div>
+    <div class="grid xl:grid-cols-[1.18fr_.82fr] gap-5 mt-5"><section class="panel p-6"><h2 class="section-title">Conceptos contemplados por la ley</h2><p class="text-[11px] muted mt-1 mb-5">Información orientativa, no equivalente a saldo acumulado.</p><div class="space-y-4">
+    ${[
+      ['Vacaciones anuales',`Tras el primer año: 15 días hábiles y +1 por año posterior, máximo 30.`,`Art. 190 LOTTT`,'https://leyteca.com/ve/lottt/articulo-190/'],
+      ['Bono vacacional',`Mínimo de 15 días de salario normal más un día por año de servicio, hasta 30.`,`Art. 192 LOTTT`,'https://leyteca.com/ve/lottt/articulo-192/'],
+      ['Utilidades',`Distribución de al menos 15 % de beneficios líquidos. Límites individuales: 30 a 120 días de salario.`,`Art. 131 LOTTT`,'https://leyteca.com/ve/lottt/articulo-131/'],
+      ['Garantía de prestaciones',`Depósitos de 15 días por trimestre y días adicionales según antigüedad. Al terminar debe compararse con cálculo retroactivo legal.`,`Art. 142 LOTTT`,'https://leyteca.com/ve/lottt/articulo-142/']
+      ].map(item=>`<div class="rounded-[12px] border border-[#e6ebef] p-4"><div class="flex flex-wrap justify-between gap-2 items-start"><strong class="text-[13px] text-[#294857]">${item[0]}</strong><a href="${item[3]}" target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold text-[#0c8c75] hover:underline">${item[2]} ↗</a></div><p class="text-[11px] text-[#798f9d] leading-[1.7] mt-2">${item[1]}</p></div>`).join('')}</div></section>
+    <section class="panel p-6"><h2 class="section-title">Base integral ilustrativa</h2><p class="text-[11px] muted mt-1 mb-5">Solo para mostrar la relación entre bases salariales.</p><div class="space-y-4">${payRow('Salario mensual normal',e.salary)}${payRow('Alícuota mensual de utilidades',e.salary*params.utilsDays/360)}${payRow('Alícuota mensual de bono vacacional',e.salary*params.bonusDays/360)}<div class="border-t pt-3">${payRow('Integral mensual teórico',monthlyIntegral,false,true)}${payRow('Integral diario teórico',dailyIntegral,false,true)}</div></div><div class="rounded-[12px] bg-[#fff6e6] border border-[#f0dfc0] p-4 mt-5"><p class="text-[11px] leading-[1.75] text-[#977c4b]">${ICON('info',13)} No se calculan prestaciones acumuladas reales, intereses, anticipos, variaciones históricas del salario ni indemnizaciones. Una liquidación requiere todo el historial y las reglas aplicables.</p></div><button class="btn btn-secondary w-full mt-4" data-action="navigate" data-target="settings">Revisar parámetros ${ICON('arrow',14)}</button></section></div>`);
+  }
+  function renderSettings(){html('view-settings',`<div class="grid xl:grid-cols-[.96fr_1.04fr] gap-5"><section class="panel p-6"><div class="flex gap-3 items-center mb-6"><div class="w-10 h-10 rounded-xl bg-[#e3f7ef] grid place-items-center text-[#12866b]">${ICON('sliders',18)}</div><div><h2 class="section-title">Parámetros demostrativos</h2><p class="text-[11px] muted mt-1">Valores temporales, editables y sin conexión externa.</p></div></div>
+    <div class="grid sm:grid-cols-2 gap-5">${fieldNum('param-wage','Salario mínimo de referencia (Bs.)',params.minWage,'Referencia Decreto 4.653 / 2022; verificar vigencia.',0,1e8)}${fieldNum('param-usd','Tasa Bs./USD de ejemplo',params.usd,'No es la tasa oficial BCV ni se actualiza.',0,1e8)}${fieldNum('param-food','Beneficio alimentación mensual (USD)',params.foodUSD,'40 USD usados como criterio ilustrativo; ver nota.',0,1e6)}${fieldNum('param-utils','Días de utilidades para alícuota',params.utilsDays,'Referencia orientativa: 30 a 120 días.',30,120)}${fieldNum('param-bonus','Días de bono vacacional para alícuota',params.bonusDays,'Ejemplo: 15 a 30 días según antigüedad.',15,30)}</div>
+    <button class="btn btn-primary mt-6" data-action="save-params">${ICON('check',15)} Aplicar parámetros en esta demo</button><p class="text-[10px] text-[#91a1a9] mt-3">Estos cambios no se almacenan y desaparecen al recargar.</p>
+    </section><section class="panel p-6"><h2 class="section-title">Marco legal de referencia</h2><p class="text-[11px] muted mt-1 mb-5">Acceso a textos normativos para consulta. No sustituye revisión profesional.</p>
+    <div class="grid sm:grid-cols-2 gap-3">${[
+      ['LOTTT','Salario normal e integral · arts. 104 y 122','https://leyteca.com/ve/lottt/articulo-104/'],
+      ['IVSS','4 % trabajador · base semanal y topes','https://docs-rh.cachicamo.app/normativa/reglamento-ley-seguro-social-2012'],
+      ['RPE','0,5 % trabajador · Ley de Empleo art. 46','https://venezuela.justia.com/federales/leyes/ley-del-regimen-prestacional-de-empleo/gdoc/'],
+      ['FAOV','1 % trabajador · 2 % patrono de base integral','https://aquisehabladerecho.com/wp-content/uploads/2017/05/ley-del-regimen-prestacional-de-vivienda-y-habitat1.pdf'],
+      ['Prestaciones','Garantía de 15 días por trimestre · art. 142','https://leyteca.com/ve/lottt/articulo-142/'],
+      ['Vacaciones y utilidades','Artículos 190, 192 y 131','https://leyteca.com/ve/guias/vacaciones-utilidades/']
+    ].map(r=>`<a class="rule-card hover:border-[#9bd9c8] transition-colors" href="${r[2]}" target="_blank" rel="noopener noreferrer"><div class="flex items-center justify-between text-[#164e54]"><strong class="text-[12px]">${r[0]}</strong>${ICON('arrow',14)}</div><p class="text-[10px] leading-[1.6] text-[#8a9ea8] mt-2">${r[1]}</p></a>`).join('')}</div>
+    <div class="rounded-[12px] bg-[#edf7f3] p-4 mt-5 text-[11px] text-[#567d75] leading-[1.75]"><strong class="block text-[#2e7165] mb-1">Acerca de los montos vigentes</strong>El salario mínimo referencial y el beneficio de alimentación pueden cambiar por normativa, jurisprudencia o ajustes. El valor USD 40 se usa de forma ilustrativa y no equivale a afirmar que exista un nuevo decreto que lo fije. Confirma siempre tasas y fuentes oficiales al pagar.</div>
+    </section></div>`);
+  }
+  function exportCSV(){const sep=';';const rows=[['Código','Trabajador','Departamento','Periodo','Asignaciones salariales (Bs.)','Beneficio alimentación (Bs.)','Retenciones referenciales (Bs.)','Neto ilustrativo (Bs.)']];for(const e of employees){const c=calc(e,e.id===state.payEmployee?payOpts():{});rows.push([e.id,e.name,e.dept,c.p.label,c.gross.toFixed(2),c.food.toFixed(2),c.discounts.toFixed(2),c.net.toFixed(2)])}const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(sep)).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='nomina-clara-demo-noviembre-2026.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast('Archivo CSV demostrativo generado. No contiene datos reales.')}
+  function modal(content){const root=get('modal-root');root.hidden=false;root.innerHTML=`<div class="overlay" id="modal-backdrop"><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-heading">${content}</section></div>`;root.querySelector('.overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});root.querySelector('button[data-action="close-modal"]')?.focus();}
+  const closeModal=()=>{get('modal-root').innerHTML='';get('modal-root').hidden=true;};
+  function addEmployeeModal(){modal(`<div class="flex justify-between items-center px-6 py-5 border-b border-[#e7ecef]"><div><h2 id="modal-heading" class="section-title">Nuevo trabajador</h2><p class="text-[11px] muted mt-1">Añade un registro temporal a esta demostración.</p></div><button class="top-icon" data-action="close-modal" aria-label="Cerrar">${ICON('x',17)}</button></div><form id="employee-form" class="p-6 space-y-4"><div class="grid sm:grid-cols-2 gap-4"><label><span class="field-label">Nombre y apellido</span><input required maxlength="60" class="field" name="name" placeholder="Ej. Carmen López"/></label><label><span class="field-label">Cargo</span><input required maxlength="70" class="field" name="job" placeholder="Ej. Analista"/></label><label><span class="field-label">Departamento</span><select name="dept" class="field"><option>Administración</option><option>Ventas</option><option>Tecnología</option><option>Finanzas</option><option>Operaciones</option><option>Atención al cliente</option></select></label><label><span class="field-label">Salario mensual (Bs.)</span><input required type="number" min="130" max="999999999" step="0.01" name="salary" class="field" placeholder="Ej. 50000"/></label><label><span class="field-label">Fecha de ingreso</span><input required type="date" min="2000-01-01" max="2026-11-12" value="2026-01-05" name="start" class="field"/></label></div><div class="rounded-xl bg-[#f3faf7] text-[#5e8c80] text-[11px] leading-[1.6] p-4">Este formulario solo modifica la visualización actual del navegador; no envía ni almacena datos.</div><div class="flex justify-end gap-2 pt-1"><button type="button" class="btn btn-secondary" data-action="close-modal">Cancelar</button><button class="btn btn-primary" type="submit">Añadir a la demo</button></div></form>`)}
+  function printReceipt(){const e=employees.find(x=>x.id===state.selectedReceipt)||employees[0];const c=calc(e,e.id===state.payEmployee?payOpts():{});html('print-area',`<div class="print-title">NÓMINA CLARA VE · RECIBO DEMOSTRATIVO</div><p>Empresa ficticia: Inversiones Horizonte, C.A. — Sin validez de pago</p><hr/><p><strong>Trabajador:</strong> ${safe(e.name)} · ${safe(e.id)} — ${safe(e.job)}<br/><strong>Período:</strong> ${datefmt(c.p.start)} al ${datefmt(c.p.end)}</p><table><thead><tr><th>Concepto</th><th>Importe</th></tr></thead><tbody>${[['Salario base',c.wage],['Horas extraordinarias',c.overtimePay],['Recargo nocturno',c.nightPay],['Prima salarial',c.bonus],['Beneficio de alimentación (no salarial)',c.food],['Retención IVSS (estimada)',-c.sso],['Retención RPE (estimada)',-c.rpe],['Retención FAOV (estimada)',-c.faov],['Otras deducciones',-c.other]].map(r=>`<tr><td>${r[0]}</td><td>${Bs(r[1])}</td></tr>`).join('')}</tbody></table><p class="total">NETO ESTIMADO: ${Bs(c.net)}</p><p>Documento ficticio. No representa nómina, pago ni liquidación oficial. Bases contributivas aproximadas.</p>`);window.print()}
+  const closeMenu=()=>{get('sidebar').classList.remove('is-open');get('mobile-backdrop').classList.remove('is-open');get('menu-btn').setAttribute('aria-expanded','false')};
+  const toggleMenu=()=>{const opened=get('sidebar').classList.toggle('is-open');get('mobile-backdrop').classList.toggle('is-open',opened);get('menu-btn').setAttribute('aria-expanded',String(opened))};
+  document.addEventListener('click',e=>{
+    const nav=e.target.closest('[data-view]');if(nav){navigate(nav.dataset.view);return}
+    const b=e.target.closest('[data-action]');if(!b)return;
+    const action=b.dataset.action;
+    if(action==='navigate')navigate(b.dataset.target);
+    else if(action==='csv')exportCSV();
+    else if(action==='add-employee')addEmployeeModal();
+    else if(action==='close-modal')closeModal();
+    else if(action==='worker-pay'){state.payEmployee=b.dataset.id;navigate('payroll')}
+    else if(action==='select-receipt'){state.selectedReceipt=b.dataset.id;renderReceipts()}
+    else if(action==='reset-pay'){Object.assign(state,{overtime:0,night:0,bonus:0,absence:0,other:0});renderPayroll();toast('Conceptos de simulación restablecidos.')}
+    else if(action==='generate-receipt'){state.selectedReceipt=state.payEmployee;navigate('receipts');toast('Recibo de ejemplo generado. No se registró ningún pago.')}
+    else if(action==='print-receipt')printReceipt();
+    else if(action==='save-params'){
+      params.minWage=clamp(get('param-wage').value,0,1e8);params.usd=clamp(get('param-usd').value,0,1e8);params.foodUSD=clamp(get('param-food').value,0,1e6);params.utilsDays=clamp(get('param-utils').value,30,120);params.bonusDays=clamp(get('param-bonus').value,15,30);renderSettings();toast('Parámetros de ejemplo actualizados hasta que recargues la página.');
+    }
+    else if(action==='reset-params'){Object.assign(params,{minWage:130,usd:850,foodUSD:40,utilsDays:30,bonusDays:15});renderSettings();toast('Se restauraron los valores ilustrativos.');}
+  });
+  document.addEventListener('change',e=>{const id=e.target.id;
+    if(id==='dashboard-period'||id==='pay-period'){state.period=e.target.value;render()}
+    if(id==='pay-worker'){state.payEmployee=e.target.value;renderPayroll()}
+    if(id==='dept-filter'){state.department=e.target.value;renderEmployees()}
+    if(id==='benefit-worker'){state.benefitEmployee=e.target.value;renderBenefits()}
+  });
+  document.addEventListener('input',e=>{if(e.target.id==='employee-filter'){const oldPos=e.target.selectionStart;state.filter=e.target.value;renderEmployees();const newInput=get('employee-filter');newInput.focus();newInput.setSelectionRange(oldPos,oldPos)}});
+  document.addEventListener('submit',e=>{if(e.target.id!=='employee-form')return;e.preventDefault();const f=new FormData(e.target);const name=String(f.get('name')||'').trim(),job=String(f.get('job')||'').trim(),dept=String(f.get('dept')||''),salary=+f.get('salary'),start=String(f.get('start')||'');if(!name||!job||salary<130||salary>999999999||!/^\d{4}-\d{2}-\d{2}$/.test(start)){toast('Verifica los campos antes de continuar.');return}const id=`EMP-${String(employees.length+1).padStart(3,'0')}`;employees.push({id,name:name.slice(0,60),job:job.slice(0,70),dept,salary,start,color:'#d9e9e4',init:name.split(/\s+/).slice(0,2).map(s=>s[0]).join('').toUpperCase()});closeModal();renderEmployees();get('sidebar-count').textContent=employees.length;toast('Trabajador ficticio añadido a la sesión de demostración.')});
+  get('menu-btn').addEventListener('click',toggleMenu);get('mobile-backdrop').addEventListener('click',closeMenu);get('help-button').addEventListener('click',()=>navigate('settings'));document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeMenu()}});
+  navigate('dashboard');
+})();
+</script>
+</body>
+</html>
