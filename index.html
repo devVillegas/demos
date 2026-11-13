@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Explora demostraciones interactivas de sitios web y soluciones digitales desarrolladas por Asisnet.">
+  <title>Demostraciones Web | Asisnet</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1120;--panel:#141e31;--line:#29354b;--text:#f5f7fb;--muted:#a8b4c9;--accent:#7dd3fc}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}a:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:5px}
+    .wrap{width:min(1120px,100%);margin:auto;padding-inline:clamp(16px,4vw,32px)}
+    header{border-bottom:1px solid var(--line)}.header-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:72px}.brand{font-weight:800;font-size:1.35rem;letter-spacing:-.04em}.brand span{color:var(--accent)}.toplink{color:var(--muted);font-size:.86rem}.toplink:hover{color:var(--text)}
+    .hero{padding:clamp(54px,9vw,108px) 0 54px}.eyebrow{color:var(--accent);letter-spacing:.18em;font-size:.72rem;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(2.25rem,6vw,4.5rem);line-height:1.12;letter-spacing:-.06em;max-width:800px;margin:16px 0 22px}.hero p{color:var(--muted);font-size:clamp(.96rem,2vw,1.1rem);max-width:690px;margin:0}.sectionhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:22px}.sectionhead h2{font-size:1.3rem;letter-spacing:-.025em;margin:0}.count{font-size:.88rem;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-bottom:86px}.card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);transition:border-color .2s,transform .2s}.card:hover{border-color:var(--accent);transform:translateY(-3px)}.art{min-height:150px;display:grid;place-items:center;font-size:3.2rem;background:linear-gradient(135deg,var(--shade1),var(--shade2));border-bottom:1px solid #ffffff18}.content{padding:22px;flex:1;display:flex;flex-direction:column}.type{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:800}.content h3{font-size:1.28rem;margin:7px 0 8px;letter-spacing:-.025em}.content p{font-size:.87rem;color:var(--muted);margin:0 0 22px;flex:1}.view{font-size:.86rem;font-weight:700;color:#e4f7ff}.view::after{content:' ↗'}
+    footer{border-top:1px solid var(--line);padding:25px 0 35px;color:var(--muted);font-size:.82rem}.footerinner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}footer a{text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:780px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:480px){.grid{grid-template-columns:1fr;gap:14px}.hero{padding:48px 0 42px}.art{min-height:110px;font-size:2.7rem}.content{padding:18px}.card{border-radius:13px}.toplink{font-size:.78rem}.brand{font-size:1.2rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero wrap"><div class="eyebrow">Portafolio · Demostraciones</div><h1>Ideas digitales que puedes explorar.</h1><p>Descubre ejemplos interactivos de sitios web y soluciones para diferentes tipos de negocios. Estos proyectos utilizan contenido ficticio y no procesan operaciones reales.</p></section>
+  <section class="wrap" aria-labelledby="demos-title"><div class="sectionhead"><h2 id="demos-title">Explora nuestras demos</h2><span class="count">6 demostraciones</span></div>
+    <div class="grid">
+      <a class="card" href="./empresarial/"><div class="art" style="--shade1:#153a54;--shade2:#172538" aria-hidden="true">🏢</div><div class="content"><span class="type">Corporativo</span><h3>Nexora</h3><p>Una web empresarial para presentar servicios, proyectos y soluciones.</p><span class="view">Explorar demo</span></div></a>
+      <a class="card" href="./nomina/"><div class="art" style="--shade1:#193e3b;--shade2:#152b32" aria-hidden="true">📊</div><div class="content"><span class="type">Software empresarial</span><h3>Nómina Clara VE</h3><p>Interfaz demostrativa para procesos de nómina en Venezuela.</p><span class="view">Explorar demo</span></div></a>
+      <a class="card" href="./tienda-ropa/"><div class="art" style="--shade1:#593c53;--shade2:#2e2636" aria-hidden="true">🛍️</div><div class="content"><span class="type">Comercio electrónico</span><h3>Ámbar Studio</h3><p>Experiencia de tienda de moda con catálogo y navegación de productos.</p><span class="view">Explorar demo</span></div></a>
+      <a class="card" href="./peluqueria/"><div class="art" style="--shade1:#624647;--shade2:#302b37" aria-hidden="true">✂️</div><div class="content"><span class="type">Belleza y bienestar</span><h3>Áurea Studio</h3><p>Sitio de servicios de belleza con experiencia de reservas de citas.</p><span class="view">Explorar demo</span></div></a>
+      <a class="card" href="./hotel/"><div class="art" style="--shade1:#244d4e;--shade2:#1e303b" aria-hidden="true">🏨</div><div class="content"><span class="type">Turismo y alojamiento</span><h3>Casa Nativa</h3><p>Hotel boutique con presentación de habitaciones y reservas de ejemplo.</p><span class="view">Explorar demo</span></div></a>
+      <a class="card" href="./salon/"><div class="art" style="--shade1:#5c4937;--shade2:#302a2d" aria-hidden="true">✨</div><div class="content"><span class="type">Eventos</span><h3>Maison Évora</h3><p>Presentación de espacios y servicios para celebraciones y eventos.</p><span class="view">Explorar demo</span></div></a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
