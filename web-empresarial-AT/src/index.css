@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-night-900 text-ice font-body antialiased;
+  }
+
+  ::selection {
+    background: rgba(79, 70, 229, 0.55);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0b0f1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4f46e5, #22d3ee);
+    border-radius: 999px;
+    border: 2px solid #0b0f1a;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6366f1, #67e8f9);
+  }
+
+  input[type='range'] {
+    @apply h-2 w-full cursor-pointer appearance-none rounded-full bg-night-700;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #4f46e5, #22d3ee);
+    border: 3px solid #0b0f1a;
+    box-shadow: 0 0 16px rgba(79, 70, 229, 0.6);
+    cursor: pointer;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    height: 22px;
+    width: 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #4f46e5, #22d3ee);
+    border: 3px solid #0b0f1a;
+    box-shadow: 0 0 16px rgba(79, 70, 229, 0.6);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md;
+  }
+
+  .input-demo {
+    @apply w-full rounded-xl border border-white/10 bg-night-850 px-4 py-3 text-sm text-ice placeholder:text-muted/70 outline-none transition duration-200 focus:border-electric-soft focus:ring-2 focus:ring-electric/40;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-electric-soft via-electric-bright to-electric-soft bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .glow-dot::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.45), transparent 70%);
+    filter: blur(4px);
+  }
+}

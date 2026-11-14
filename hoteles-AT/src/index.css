@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-arena-50 font-sans text-tinta antialiased;
+}
+
+::selection {
+  @apply bg-dorado/30 text-esmeralda-950;
+}
+
+/* Scrollbar fino y acorde a la identidad */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f2e22;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a227;
+  border-radius: 8px;
+  border: 2px solid #0f2e22;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e4c55b;
+}
+
+@layer components {
+  /* Etiqueta uppercase con tracking amplio, firma de la marca */
+  .label-caps {
+    @apply text-[11px] font-medium uppercase tracking-label text-dorado;
+  }
+
+  .label-caps-dark {
+    @apply text-[11px] font-medium uppercase tracking-label text-esmeralda-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-esmeralda-900 text-arena-100 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:bg-esmeralda-700 hover:tracking-[0.25em] focus:outline-none focus-visible:ring-2 focus-visible:ring-dorado;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 bg-dorado text-esmeralda-950 px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:bg-dorado-light focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-900;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-esmeralda-900/40 text-esmeralda-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] transition-all duration-300 hover:border-dorado hover:text-dorado-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-dorado;
+  }
+
+  .input-field {
+    @apply w-full bg-transparent border-b border-esmeralda-900/25 py-2.5 text-[15px] text-esmeralda-950 placeholder:text-esmeralda-900/35 focus:outline-none focus:border-dorado transition-colors;
+  }
+
+  .input-dark {
+    @apply w-full bg-esmeralda-950/40 border border-arena-200/20 px-4 py-3 text-[14px] text-arena-100 focus:outline-none focus:border-dorado transition-colors [color-scheme:dark];
+  }
+
+  .divider-line {
+    @apply h-px w-12 bg-dorado/70;
+  }
+
+  .section-pad {
+    @apply px-5 sm:px-8 lg:px-16 xl:px-24;
+  }
+}
