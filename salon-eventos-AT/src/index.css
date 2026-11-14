@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-neutral-200 font-body antialiased;
+}
+
+/* ---------- Scrollbar dorada ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0b;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a8862a 0%, #d4af37 50%, #a8862a 100%);
+  border-radius: 8px;
+  border: 2px solid #0a0a0b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d4af37 0%, #f59e0b 50%, #d4af37 100%);
+}
+
+/* ---------- Selección dorada ---------- */
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #f5e6c8;
+}
+::-moz-selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #f5e6c8;
+}
+
+/* ---------- Glows radiales ---------- */
+.gold-glow {
+  position: relative;
+}
+.gold-glow::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(ellipse at 50% 40%, rgba(212, 175, 55, 0.14) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-vignette {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(10, 10, 11, 0.55) 0%, rgba(10, 10, 11, 0.75) 55%, #0a0a0b 100%);
+}
+
+/* ---------- Partículas doradas flotantes ---------- */
+.gold-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.gold-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(232, 201, 106, 0.9) 0%, rgba(212, 175, 55, 0) 70%);
+  opacity: 0;
+  animation: riseParticle linear infinite;
+}
+@keyframes riseParticle {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(24px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* ---------- Separador ornamental con líneas finas ---------- */
+.ornament-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.6) 50%, transparent 100%);
+}
+
+/* ---------- Borde dorado animado en hover ---------- */
+.gold-border-anim {
+  position: relative;
+}
+.gold-border-anim::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212, 175, 55, 0);
+  border-radius: inherit;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+  pointer-events: none;
+}
+.gold-border-anim:hover::after {
+  border-color: rgba(212, 175, 55, 0.55);
+  box-shadow: 0 0 30px -6px rgba(212, 175, 55, 0.4);
+}
+
+/* ---------- Slider estilizado dorado ---------- */
+input[type="range"].slider-gold {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    #d4af37 0%,
+    #f59e0b var(--fill, 50%),
+    #232327 var(--fill, 50%),
+    #232327 100%
+  );
+  outline: none;
+}
+input[type="range"].slider-gold::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #f5e6c8 0%, #d4af37 45%, #a8862a 100%);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.6), 0 0 18px rgba(212, 175, 55, 0.55);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+input[type="range"].slider-gold::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"].slider-gold::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #f5e6c8 0%, #d4af37 45%, #a8862a 100%);
+  border: 2px solid #0a0a0b;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.6), 0 0 18px rgba(212, 175, 55, 0.55);
+  cursor: pointer;
+}
+input[type="range"].slider-gold::-moz-range-progress {
+  background: linear-gradient(90deg, #d4af37 0%, #f59e0b 100%);
+  height: 6px;
+  border-radius: 9999px;
+}
+
+/* ---------- Inputs ---------- */
+.input-dark {
+  @apply w-full rounded-lg border border-gold/25 bg-ink-700 px-4 py-3 text-sm text-neutral-200 placeholder-neutral-500 outline-none transition-colors;
+}
+.input-dark:focus {
+  @apply border-gold/70;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12);
+}
+
+/* ---------- Checkbox dorado ---------- */
+input[type="checkbox"].check-gold {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: #121214;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+input[type="checkbox"].check-gold:checked {
+  background: linear-gradient(135deg, #d4af37 0%, #f59e0b 100%);
+  border-color: #d4af37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+input[type="checkbox"].check-gold:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2.5px;
+  width: 5px;
+  height: 10px;
+  border: solid #0a0a0b;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ---------- Texto con degradado dorado ---------- */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f5e6c8 0%, #d4af37 45%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-powder-soft/60 text-ink;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #efe7dd;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #b76e79 0%, #c9a227 100%);
+    border-radius: 9999px;
+    border: 2px solid #efe7dd;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #96525e 0%, #a5851b 100%);
+  }
+}
+
+@layer components {
+  .container-editorial {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .overline-label {
+    @apply font-body text-[11px] font-medium uppercase tracking-widest2 text-powder;
+  }
+
+  .display-italic {
+    @apply font-display italic;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-ink/25 px-7 py-3 font-body text-[12px] font-medium uppercase tracking-widest2 text-ink transition-all duration-300 hover:border-powder hover:bg-powder hover:text-cream;
+  }
+
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2 bg-ink px-7 py-3 font-body text-[12px] font-medium uppercase tracking-widest2 text-cream transition-all duration-300 hover:bg-powder-dark disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .fine-line {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold/60 to-transparent;
+  }
+
+  .field-label {
+    @apply mb-2 block font-body text-[11px] font-medium uppercase tracking-widest2 text-ink-soft;
+  }
+
+  .field-input {
+    @apply w-full border border-ink/20 bg-cream-soft px-4 py-3 font-body text-sm text-ink outline-none transition-colors duration-300 placeholder:text-ink-faint focus:border-powder focus:ring-1 focus:ring-powder/40;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gold-underline {
+    background-image: linear-gradient(90deg, #c9a227, #b76e79);
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 100%;
+    padding-bottom: 6px;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
